@@ -17,7 +17,7 @@ public class BreadthFirstSearch {
         invoke(person, p -> System.out.println(p.getName()));
     }
 
-    public static void invoke(Person p, Consumer<Person> consumer) {
+    private static void invoke(Person p, Consumer<Person> consumer) {
         if (p != null && consumer != null) {
             Queue<Person> queue = new ArrayDeque<>();
             queue.add(p);

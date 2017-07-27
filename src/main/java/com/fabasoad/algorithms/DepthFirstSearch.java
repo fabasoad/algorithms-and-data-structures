@@ -15,7 +15,7 @@ public class DepthFirstSearch {
         invoke(person, p -> System.out.println(p.getName()));
     }
 
-    public static void invoke(Person p, Consumer<Person> consumer) {
+    private static void invoke(Person p, Consumer<Person> consumer) {
         if (p != null && consumer != null) {
             consumer.accept(p);
             for (Person child : p.getChildren()) {

@@ -18,7 +18,7 @@ public class BinarySearch {
         find(data, new Random().nextInt(100));
     }
 
-    public static void find(int[] data, int x) {
+    private static void find(int[] data, int x) {
         System.out.println("Data: " + Arrays.toString(data));
         System.out.println("Element to find: " + x);
 
