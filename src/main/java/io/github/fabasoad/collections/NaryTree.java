@@ -23,12 +23,16 @@ public class NaryTree {
         tree.root.add(node12);
 
         System.out.print("BFS is [ ");
-        tree.bfs(value -> System.out.print(value + " "));
+        tree.bfs(NaryTree::print);
         System.out.println("]");
 
         System.out.print("DFS is [ ");
-        tree.dfs(value -> System.out.print(value + " "));
+        tree.dfs(NaryTree::print);
         System.out.println("]");
+    }
+
+    private static void print(final int value) {
+        System.out.print(value + " ");
     }
 
     Node<Integer> root;

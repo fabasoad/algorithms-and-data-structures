@@ -9,7 +9,6 @@ import java.util.Hashtable;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -30,7 +29,7 @@ public class LinearDataStructures {
 //        arrayListTest();
 //        vectorTest();
 //        treeSetTest();
-        treeMapTest();
+//        treeMapTest();
 //        bagTest();
 //        queueTest();
 //        stackTest();
@@ -118,9 +117,9 @@ public class LinearDataStructures {
     }
 
     private static void treeMapTest() {
-        // Black-Red tree based.
+        // Red-Black tree based.
+        // ---------------------
         // Doesn't allow nulls for keys (allowed for values though). It's sorted map by keys. Not synchronized.
-        // Internally uses bidirectional linked list.
         final TreeMap<Integer, Integer> map = new TreeMap<>();
         map.put(24, 2);
         map.put(453543, 3);
@@ -128,7 +127,6 @@ public class LinearDataStructures {
         map.put(67, null);
         map.put(-14, 36);
         map.put(-78, 37);
-//        map.put(new NullHash(3), 38);
         var element = map.get(-78);
         System.out.println(element);
 
@@ -154,7 +152,6 @@ public class LinearDataStructures {
         tree2.put(2, 230);
         var element2 = tree2.get(1);
         System.out.println(element2);
-
     }
 
     private static void treeSetTest() {

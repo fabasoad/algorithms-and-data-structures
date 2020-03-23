@@ -14,16 +14,20 @@ class BinaryTree {
         tree.root.left.right = new Node<>(5);
 
         System.out.print("Preorder traversal of binary tree is [ ");
-        tree.traversePreorder(value -> System.out.print(value + " "));
+        tree.traversePreorder(BinaryTree::print);
         System.out.println("]");
 
         System.out.print("Inorder traversal of binary tree is [ ");
-        tree.traverseInorder(value -> System.out.print(value + " "));
+        tree.traverseInorder(BinaryTree::print);
         System.out.println("]");
 
         System.out.print("Postorder traversal of binary tree is [ ");
-        tree.traversePostorder(value -> System.out.print(value + " "));
+        tree.traversePostorder(BinaryTree::print);
         System.out.println("]");
+    }
+
+    private static void print(final int value) {
+        System.out.print(value + " ");
     }
 
     // Root of Binary Tree
