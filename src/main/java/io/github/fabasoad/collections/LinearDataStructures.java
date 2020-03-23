@@ -30,7 +30,7 @@ public class LinearDataStructures {
 //        arrayListTest();
 //        vectorTest();
 //        treeSetTest();
-//        treeMapTest();
+        treeMapTest();
 //        bagTest();
 //        queueTest();
 //        stackTest();
@@ -118,19 +118,43 @@ public class LinearDataStructures {
     }
 
     private static void treeMapTest() {
+        // Black-Red tree based.
         // Doesn't allow nulls for keys (allowed for values though). It's sorted map by keys. Not synchronized.
         // Internally uses bidirectional linked list.
-        final TreeMap<Object, Integer> map = new TreeMap<>();
-        map.put("k1", 2);
-        map.put("k1", 3);
-        map.put("k2", 23);
-        map.put("k3", null);
-        map.put(new NullHash(2), 36);
-        map.put(new NullHash(1), 37);
-        map.put(new NullHash(3), 38);
-        var element = map.get(new NullHash(45));
+        final TreeMap<Integer, Integer> map = new TreeMap<>();
+        map.put(24, 2);
+        map.put(453543, 3);
+        map.put(3, 23);
+        map.put(67, null);
+        map.put(-14, 36);
+        map.put(-78, 37);
+//        map.put(new NullHash(3), 38);
+        var element = map.get(-78);
+        System.out.println(element);
 
         System.out.println(map.entrySet().stream().map(String::valueOf).collect(joining(",")));
+
+        // Ordering of insertions matters! If we insert values in asc/desc order result will be less efficient than in
+        // random order. Example: if we insert values in [4, 5, 3, 6, 1, 2] order, we will have the following tree:
+        //       4
+        //    2     5
+        //  1   3     6
+        // If we insert values in [1, 2, 3, 4, 5, 6] order, we will have the following tree (depth is greater than in
+        // the previous example by 1):
+        //        5
+        //     3     6
+        //   2   4
+        // 1
+        final var tree2 = new TreeMap<Integer, Integer>();
+        tree2.put(4, 232);
+        tree2.put(5, 233);
+        tree2.put(3, 231);
+        tree2.put(6, 234);
+        tree2.put(1, 229);
+        tree2.put(2, 230);
+        var element2 = tree2.get(1);
+        System.out.println(element2);
+
     }
 
     private static void treeSetTest() {
