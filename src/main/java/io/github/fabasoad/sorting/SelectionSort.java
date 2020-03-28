@@ -1,9 +1,10 @@
 package io.github.fabasoad.sorting;
 
 // O(n^2)
-public class SelectionSort {
+public class SelectionSort implements Sort {
 
-    public void sort(final int[] arr) {
+    @Override
+    public int[] sort(final int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             var min = i;
             for (int j = i + 1; j < arr.length; j++) {
@@ -17,5 +18,6 @@ public class SelectionSort {
                 arr[i] = temp;
             }
         }
+        return arr;
     }
 }

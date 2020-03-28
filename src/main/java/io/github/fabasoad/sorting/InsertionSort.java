@@ -1,9 +1,10 @@
 package io.github.fabasoad.sorting;
 
 // O(n^2)
-public class InsertionSort {
+public class InsertionSort implements Sort {
 
-    public void sort(final int[] arr) {
+    @Override
+    public int[] sort(final int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (arr[j] < arr[j - 1]) {
@@ -13,5 +14,6 @@ public class InsertionSort {
                 }
             }
         }
+        return arr;
     }
 }
