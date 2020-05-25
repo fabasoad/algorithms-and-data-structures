@@ -1,6 +1,8 @@
 package io.github.fabasoad.sorting;
 
-public interface Sort {
+import java.util.Comparator;
 
-    int[] sort(int[] arr);
+public interface Sort<T> {
+
+    T[] sort(T[] arr, Comparator<T> comparator);
 }

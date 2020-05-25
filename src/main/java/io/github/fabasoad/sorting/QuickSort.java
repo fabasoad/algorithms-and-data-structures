@@ -1,35 +1,37 @@
 package io.github.fabasoad.sorting;
 
-public class QuickSort implements Sort {
+import java.util.Comparator;
+
+public class QuickSort<T> implements Sort<T> {
 
     @Override
-    public int[] sort(int[] arr) {
-        sort(arr, 0, arr.length - 1);
+    public T[] sort(final T[] arr, final Comparator<T> comparator) {
+        sort(arr, 0, arr.length - 1, comparator);
         return arr;
     }
 
-    private static void sort(int[] arr, int s, int e) {
+    private void sort(final T[] arr, int s, int e, final Comparator<T> comparator) {
         if (s >= e) {
             return;
         }
 
-        int a = getPivotIndex(arr, s, e);
+        int a = getPivotIndex(arr, s, e, comparator);
 
-        sort(arr, s, a - 1);
-        sort(arr, a + 1, e);
+        sort(arr, s, a - 1, comparator);
+        sort(arr, a + 1, e, comparator);
     }
 
-    private static int getPivotIndex(int[] arr, int s, int e) {
-        int pivot = arr[e];
+    private int getPivotIndex(T[] arr, int s, int e, final Comparator<T> comparator) {
+        T pivot = arr[e];
 
         int a = s;
         int b = e - 1;
 
         while (a <= b) {
-            while (a <= b && arr[a] < pivot) {
+            while (a <= b && comparator.compare(arr[a], pivot) < 0) {
                 a++;
             }
-            while (b >= a && arr[b] >= pivot) {
+            while (b >= a && comparator.compare(arr[b], pivot) >= 0) {
                 b--;
             }
             swap(arr, a, a < b ? b : e);
@@ -38,8 +40,8 @@ public class QuickSort implements Sort {
         return a;
     }
 
-    private static void swap(int[] arr, int a, int b) {
-        int t = arr[b];
+    private void swap(T[] arr, int a, int b) {
+        final T t = arr[b];
         arr[b] = arr[a];
         arr[a] = t;
     }

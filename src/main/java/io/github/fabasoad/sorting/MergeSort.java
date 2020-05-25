@@ -1,20 +1,24 @@
 package io.github.fabasoad.sorting;
 
-public class MergeSort implements Sort {
+import java.util.Comparator;
+
+import static io.github.fabasoad.arrays.ArrayUtils.newArray;
+
+public class MergeSort<T> implements Sort<T> {
 
     @Override
-    public int[] sort(int[] a) {
-        return mergeSort(a, 0, a.length);
+    public T[] sort(final T[] a, final Comparator<T> comparator) {
+        return mergeSort(a, 0, a.length, comparator);
     }
 
-    private static int[] mergeSort(int[] a, int s, int e) {
+    private T[] mergeSort(T[] a, int s, int e, final Comparator<T> comparator) {
         if (e - s > 1) {
-            int[] left = mergeSort(a, s, (s + e) / 2);
-            int[] right = mergeSort(a, (s + e) / 2, e);
-            int[] res = new int[left.length + right.length];
+            T[] left = mergeSort(a, s, (s + e) / 2, comparator);
+            T[] right = mergeSort(a, (s + e) / 2, e, comparator);
+            T[] res = newArray(left.length + right.length);
             int l = 0, r = 0, i = 0;
             while (l < left.length && r < right.length) {
-                if (left[l] < right[r]) {
+                if (comparator.compare(left[l], right[r]) < 0) {
                     res[i] = left[l];
                     i++;
                     l++;
@@ -36,7 +40,7 @@ public class MergeSort implements Sort {
             }
             return res;
         } else {
-            return new int[] { a[s] };
+            return newArray(1, a[s]);
         }
     }
 }
