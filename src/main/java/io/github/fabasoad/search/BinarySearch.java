@@ -4,8 +4,14 @@ import java.util.Comparator;
 
 public class BinarySearch<T> implements Search<T> {
 
+  private final Comparator<T> comparator;
+
+  public BinarySearch(final Comparator<T> comparator) {
+    this.comparator = comparator;
+  }
+
   @Override
-  public int find(final T[] arr, final T element, final Comparator<T> comparator) {
+  public int find(final T[] arr, final T element) {
     int i = -1;
     if (arr != null) {
       int low = 0, high = arr.length, mid;
